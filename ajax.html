@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="cache-control" content="no-cache">
+<meta name="generator" content="PSPad editor, www.pspad.com">
+<title>Random Values</title>
+<style type="text/css">
+body {margin:0;padding:0;font-family:Georgia;text-align:center;}
+#pge {display:block;width:500px;margin:3px auto;}
+.big{font-size:96px;font-weight:bold;}
+</style>
+</head>
+<body>
+	<div id="pge">
+	<div id="player/1/ammo" class="big">Here</div><div id="player/2/ammo" class="big">Unknown</div>
+</div>
+<script type="text/javascript">
+(function (){var cmp=0;
+	function snd(){var s;
+	// Remove preceding script
+	  s=document.getElementsByTagName("script");
+	  for (i=0;i<s.length;i++)
+			if (s[i] && s[i].getAttribute("src")!=null && s[i].getAttribute("src").indexOf('scriptWork.php')!=-1)
+	    	s[i].parentNode.removeChild(s[i]);
+		s=document.createElement('script');
+		s.type = 'text/javascript';
+		//s.src = 'scriptWork.php?cmp='+cmp;
+		s.src = '/?player/1/ammo'
+		document.getElementsByTagName("head")[0].appendChild(s);
+
+		cmp++;
+		setTimeout(snd,1000);
+	}
+snd();
+})();
+</script>
+</body>
+</html>
