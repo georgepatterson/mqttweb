@@ -44,6 +44,8 @@ class webMQTT(Resource):
                 bufstr=self._stringMessageBuffer()
 
                 filecontents=filecontents.replace('{MessageBuffer}', bufstr)
+            elif resource=="javascript/prototype.js":
+				filecontents=open("/var/www/mqttajax/prototype.js", "r").read()
             else:
                 filecontents=open("/var/www/mqttajax/ajax.html", "r").read()
 
@@ -57,13 +59,15 @@ class webMQTT(Resource):
             else:
                 result="N/A"
 
-            msg= "document.getElementById('%s').innerHTML=%s;" % (resource ,result)
+            msg= "%s" % (result)
             return msg
 
     def _stringMessageBuffer(self):
         bufstr=""
-        for bufkey, bufvalue in  mqttMessageBuffer.iteritems():
-            bufstr += "%s<br/>\n" % bufkey
+
+        sortedkeys=sorted(mqttMessageBuffer.keys())
+        for i in range(0, len(sortedkeys)):
+			bufstr += "%s<br/>\n" % sortedkeys[i]
 
         return bufstr
 
